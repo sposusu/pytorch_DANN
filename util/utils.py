@@ -49,10 +49,8 @@ def get_train_loader(dataset):
             transforms.Normalize(mean=params.dataset_mean, std=params.dataset_std)
         ])
 
-        data1 = datasets.SVHN(root=params.svhn_path, split='train', transform=transform, download=True)
-        data2 = datasets.SVHN(root= params.svhn_path, split= 'extra', transform = transform, download= True)
+        data = datasets.ImageFolder(root=params.svhn_path + '/train', transform= transform)
 
-        data = torch.utils.data.ConcatDataset((data1, data2))
 
         dataloader = DataLoader(dataset=data, batch_size=params.batch_size, shuffle=True)
     elif dataset == 'SynDig':
@@ -108,7 +106,7 @@ def get_test_loader(dataset):
             transforms.Normalize(mean= params.dataset_mean, std = params.dataset_std)
         ])
 
-        data = datasets.SVHN(root= params.svhn_path, split= 'test', transform = transform, download= True)
+        data = datasets.ImageFolder(root=params.svhn_path + '/test', transform= transform)
 
         dataloader = DataLoader(dataset = data, batch_size= 1, shuffle= False)
     elif dataset == 'SynDig':
