@@ -18,7 +18,7 @@ theta = 1
 data_root = '../hw3-sposusu/hw3_data/digits'
 
 mnist_path = data_root + '/MNIST'
-usps_path = data_root + '/usps
+usps_path = data_root + '/usps'
 
 mnistm_path = data_root + '/mnistm'
 svhn_path = data_root + '/svhn'
