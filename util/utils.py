@@ -26,11 +26,9 @@ def get_train_loader(dataset):
             transforms.Normalize(mean= params.dataset_mean, std= params.dataset_std)
         ])
 
-        data = datasets.MNIST(root= params.mnist_path, train= True, transform= transform,
-                              download= True)
+        data = datasets.ImageFolder(root=params.mnistm_path + '/train', transform= transform)
 
-        dataloader = DataLoader(dataset= data, batch_size= params.batch_size, shuffle= True)
-
+        dataloader = DataLoader(dataset = data, batch_size= params.batch_size, shuffle= True)
 
     elif dataset == 'mnistm':
         transform = transforms.Compose([
