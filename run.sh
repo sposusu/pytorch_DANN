@@ -1,3 +1,2 @@
-python3 main.py --source_domain mnistm --target_domain svhn --training_mode dann \
---max_epoch 10 --fig_mode save
+python3 main.py --source_domain usps --target_domain mnistm --training_mode dann --max_epoch 6 --fig_mode save
 
