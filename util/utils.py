@@ -20,7 +20,7 @@ def get_train_loader(dataset):
     Get train dataloader of source domain or target domain
     :return: dataloader
     """
-    if dataset == 'MNIST':
+    if dataset == 'usps':
         transform = transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize(mean= params.dataset_mean, std= params.dataset_std)
@@ -32,7 +32,7 @@ def get_train_loader(dataset):
         dataloader = DataLoader(dataset= data, batch_size= params.batch_size, shuffle= True)
 
 
-    elif dataset == 'MNIST_M':
+    elif dataset == 'mnistm':
         transform = transforms.Compose([
             transforms.RandomCrop((28)),
             transforms.ToTensor(),
@@ -43,7 +43,7 @@ def get_train_loader(dataset):
 
         dataloader = DataLoader(dataset = data, batch_size= params.batch_size, shuffle= True)
 
-    elif dataset == 'SVHN':
+    elif dataset == 'svhn':
         transform = transforms.Compose([
             transforms.RandomCrop((28)),
             transforms.ToTensor(),
@@ -80,7 +80,7 @@ def get_test_loader(dataset):
     Get test dataloader of source domain or target domain
     :return: dataloader
     """
-    if dataset == 'MNIST':
+    if dataset == 'usps':
         transform = transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize(mean= params.dataset_mean, std= params.dataset_std)
@@ -90,7 +90,7 @@ def get_test_loader(dataset):
                               download= True)
 
         dataloader = DataLoader(dataset= data, batch_size= 1, shuffle= False)
-    elif dataset == 'MNIST_M':
+    elif dataset == 'mnistm':
         transform = transforms.Compose([
             # transforms.RandomCrop((28)),
             transforms.CenterCrop((28)),
@@ -101,7 +101,7 @@ def get_test_loader(dataset):
         data = datasets.ImageFolder(root=params.mnistm_path + '/test', transform= transform)
 
         dataloader = DataLoader(dataset = data, batch_size= 1, shuffle= False)
-    elif dataset == 'SVHN':
+    elif dataset == 'svhn':
         transform = transforms.Compose([
             transforms.CenterCrop((28)),
             transforms.ToTensor(),
