@@ -81,6 +81,7 @@ def get_test_loader(dataset):
     """
     if dataset == 'usps':
         transform = transforms.Compose([
+            transforms.Grayscale(3),
             transforms.ToTensor(),
             transforms.Normalize(mean= params.dataset_mean, std= params.dataset_std)
         ])
