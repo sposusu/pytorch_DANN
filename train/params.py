@@ -15,11 +15,13 @@ gamma = 10
 theta = 1
 
 # path params
-data_root = './data'
+data_root = '../hw3-sposusu/hw3_data/digits'
 
 mnist_path = data_root + '/MNIST'
-mnistm_path = data_root + '/MNIST_M'
-svhn_path = data_root + '/SVHN'
+usps_path = data_root + '/usps
+
+mnistm_path = data_root + '/mnistm'
+svhn_path = data_root + '/svhn'
 syndig_path = data_root + '/SynthDigits'
 
 save_dir = './experiment'
