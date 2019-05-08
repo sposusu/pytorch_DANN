@@ -23,6 +23,7 @@ def get_train_loader(dataset):
     if dataset == 'usps':
         transform = transforms.Compose([
             transforms.ToTensor(),
+            transforms.Grayscale(3),
             transforms.Normalize(mean= params.dataset_mean, std= params.dataset_std)
         ])
 
