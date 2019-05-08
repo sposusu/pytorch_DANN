@@ -27,7 +27,7 @@ def get_train_loader(dataset):
             transforms.Normalize(mean= params.dataset_mean, std= params.dataset_std)
         ])
 
-        data = datasets.ImageFolder(root=params.mnistm_path + '/train', transform= transform)
+        data = datasets.ImageFolder(root=params.usps_path + '/train', transform= transform)
 
         dataloader = DataLoader(dataset = data, batch_size= params.batch_size, shuffle= True)
 
@@ -84,7 +84,7 @@ def get_test_loader(dataset):
             transforms.Normalize(mean= params.dataset_mean, std= params.dataset_std)
         ])
 
-        data = datasets.MNIST(root= params.mnist_path, train= False, transform= transform,
+        data = datasets.usps(root= params.usps_path+ '/test', train= False, transform= transform,
                               download= True)
 
         dataloader = DataLoader(dataset= data, batch_size= 1, shuffle= False)
