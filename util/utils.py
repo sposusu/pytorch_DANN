@@ -84,8 +84,8 @@ def get_test_loader(dataset):
             transforms.Normalize(mean= params.dataset_mean, std= params.dataset_std)
         ])
 
-        data = datasets.usps(root= params.usps_path+ '/test', train= False, transform= transform,
-                              download= True)
+        data = datasets.ImageFolder(root=params.usps_path + '/test', transform= transform)
+
 
         dataloader = DataLoader(dataset= data, batch_size= 1, shuffle= False)
     elif dataset == 'mnistm':
