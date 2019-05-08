@@ -174,7 +174,9 @@ def main(args):
         if epoch % params.embed_plot_epoch == 0 and params.fig_mode is not None:
             visualizePerformance(feature_extractor, class_classifier, domain_classifier, src_test_dataloader,
                                  tgt_test_dataloader, imgName='embedding_' + str(epoch))
-
+    feature_extractor
+    class_classifier
+    domain_classifier
 
 
 def parse_arguments(argv):
@@ -193,7 +195,7 @@ def parse_arguments(argv):
 
     parser.add_argument('--max_epoch', type=int, default=100, help='The max number of epochs.')
 
-    parser.add_argument('--embed_plot_epoch', type= int, default=100, help= 'Epoch number of plotting embeddings.')
+    parser.add_argument('--embed_plot_epoch', type= int, default=5, help= 'Epoch number of plotting embeddings.')
 
     parser.add_argument('--lr', type= float, default= 0.01, help= 'Learning rate.')
 

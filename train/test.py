@@ -48,6 +48,7 @@ def test(feature_extractor, class_classifier, domain_classifier, source_dataload
         src_preds = domain_classifier(feature_extractor(input1), constant)
         src_preds = src_preds.data.max(1, keepdim= True)[1]
         src_correct += src_preds.eq(src_labels.data.view_as(src_preds)).cpu().sum()
+        
 
     for batch_idx, tdata in enumerate(target_dataloader):
         # setup hyperparameters
