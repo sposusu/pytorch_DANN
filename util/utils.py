@@ -26,7 +26,7 @@ class PredictData(Dataset):
         self.transform = transform
 
         # read filenames
-        filenames = glob.glob(os.path.join(img_root,"*.jpg")) 
+        filenames = glob.glob(os.path.join(root,"*.jpg")) 
         
         for fn in filenames:
             self.filenames.append(fn) 
