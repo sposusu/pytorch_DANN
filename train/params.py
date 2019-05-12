@@ -52,4 +52,4 @@ domain_dict = {
                'svhn_usps': models.SVHN_Domain_classifier(),
               'mnistm':'domainmnistm_10',
                   'svhn':"domainsvhn_5",
-                  'usps':"domainusps_10"}}
+                  'usps':"domainusps_10"}
