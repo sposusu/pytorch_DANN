@@ -108,8 +108,8 @@ def main(args):
     domain_classifier = params.domain_dict[model_index]
 
     load_checkpoint(params.extractor_dict[params.target_domain],feature_extractor)
-    load_checkpoint(params.extractor_dict[params.target_domain],class_classifier)
-    load_checkpoint(params.extractor_dict[params.target_domain],domain_classifier)
+    load_checkpoint(params.class_dict[params.target_domain],class_classifier)
+    load_checkpoint(params.domain_dict[params.target_domain],domain_classifier)
 
     if params.use_gpu:
         feature_extractor.cuda()
