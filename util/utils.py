@@ -213,7 +213,7 @@ def plot_embedding(X, y, d, title=None, imgName=None):
 
     # Plot colors numbers
     plt.figure(figsize=(10,10))
-    ax = plt.subplot(211)
+    ax = plt.subplot(111)
 
     for i in range(X.shape[0]):
         # plot colored number
@@ -228,13 +228,13 @@ def plot_embedding(X, y, d, title=None, imgName=None):
         plt.title(title)
     else:
         plt.title(params.training_mode)
-    plt.subplot(212)
-    for i in range(X.shape[0]):
-        # plot colored number
-        plt.plot(X[i, 0], X[i, 1],
-                 color=plt.cm.bwr(y[i])
-                 )
-    plt.xticks([]), plt.yticks([])
+    #plt.subplot(212)
+    #for i in range(X.shape[0]):
+    # plot colored number
+    #    plt.plot(X[i, 0], X[i, 1],
+    #             color=plt.cm.bwr(y[i])
+    #             )
+    #plt.xticks([]), plt.yticks([])
 
     if params.fig_mode == 'display':
         # Directly display if no folder provided.
