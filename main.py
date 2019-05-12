@@ -172,7 +172,7 @@ def main(args):
 
 
         # Plot embeddings periodically.
-        if (epoch % 5) == 0 and params.fig_mode is not None:
+        if (epoch % 1) == 0 and params.fig_mode is not None:
             visualizePerformance(feature_extractor, class_classifier, domain_classifier, src_test_dataloader,
                                  tgt_test_dataloader, imgName='embedding_' + str(epoch))
     feature_extractor
