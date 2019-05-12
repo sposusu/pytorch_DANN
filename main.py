@@ -103,6 +103,7 @@ def visualizePerformance(feature_extractor, class_classifier, domain_classifier,
         dann_tsne = tsne.fit_transform(np.concatenate((embedding1.detach().numpy(),
                                                    embedding2.detach().numpy())))
 
+    print("TSNE:",dann_tsne)
 
     utils.plot_embedding(dann_tsne, np.concatenate((s_labels, t_labels)),
                          np.concatenate((s_tags, t_tags)), 'Domain Adaptation', imgName)
