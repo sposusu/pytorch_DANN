@@ -131,7 +131,7 @@ def main(args):
         ans, name = test(feature_extractor, class_classifier, domain_classifier, src_test_dataloader, tgt_test_dataloader)
     with open(params.save_dir, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(['image_name','label']])
+        writer.writerow(['image_name','label'])
 
         for a, n in zip(ans, name):
             writer.writerow([n,a])
