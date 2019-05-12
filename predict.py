@@ -9,7 +9,7 @@ import torch.optim as optim
 
 import numpy as np
 
-# from models_2 import models
+from models import models
 from train import  params
 from util import utils
 from sklearn.manifold import TSNE
@@ -26,7 +26,7 @@ def load_checkpoint(checkpoint_path, model):
     model.load_state_dict(state['state_dict'])
     print('model loaded from %s' % checkpoint_path)
 
-def test(feature_extractor, class_classifier, domain_classifier, source_dataloader, target_dataloader):
+def test(feature_extractor, class_classifier, domain_classifier, target_dataloader):
     """
     Test the performance of the model
     :param feature_extractor: network used to extract feature from target samples
@@ -102,10 +102,10 @@ def main(args):
         # utils.displayImages(tgt_test_dataloader, imgName='target')
 
     # init models
-    model_index = params.source_domain + '_' + params.target_domain
-    feature_extractor = params.extractor_dict[model_index]
-    class_classifier = params.class_dict[model_index]
-    domain_classifier = params.domain_dict[model_index]
+    #model_index = params.source_domain + '_' + params.target_domain
+    feature_extractor = models.SVHN_Extractor()#params.extractor_dict[model_index]
+    class_classifier =models.SVHN_Class_classifier() #params.class_dict[model_index]
+    domain_classifier = models.SVHN_Domain_classifier()#params.domain_dict[model_index]
 
     load_checkpoint(params.extractor_dict[params.target_domain],feature_extractor)
     load_checkpoint(params.class_dict[params.target_domain],class_classifier)
@@ -128,7 +128,7 @@ def main(args):
     for epoch in range(params.epochs):
         print('Epoch: {}'.format(epoch))
 
-        ans, name = test(feature_extractor, class_classifier, domain_classifier, src_test_dataloader, tgt_test_dataloader)
+        ans, name = test(feature_extractor, class_classifier, domain_classifier, tgt_test_dataloader)
     with open(params.save_dir, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(['image_name','label'])
