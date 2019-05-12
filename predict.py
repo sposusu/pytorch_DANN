@@ -66,7 +66,7 @@ def test(feature_extractor, class_classifier, domain_classifier, target_dataload
 
         output2 = class_classifier(feature_extractor(input2))
         pred2 = output2.data.max(1, keepdim=True)[1]
-        ans.extend(pred2.cpu())
+        ans.extend(pred2.data)
         file_fn.extend(label2)
     return ans, file_fn
 
@@ -131,7 +131,7 @@ def main(args):
         print('Epoch: {}'.format(epoch))
 
         ans, name = test(feature_extractor, class_classifier, domain_classifier, tgt_test_dataloader)
-        
+
     with open(params.save_dir, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(['image_name','label'])
