@@ -15,6 +15,8 @@ from util import utils
 from sklearn.manifold import TSNE
 from torchvision import datasets, transforms
 import argparse, sys, os
+import csv
+
 
 import torch
 from torch.autograd import Variable
@@ -51,7 +53,7 @@ def test(feature_extractor, class_classifier, domain_classifier, target_dataload
 
     for batch_idx, tdata in enumerate(target_dataloader):
         # setup hyperparameters
-        p = float(batch_idx) / len(source_dataloader)
+        p = float(batch_idx) / len(target_dataloader)
         constant = 2. / (1. + np.exp(-10 * p)) - 1
 
         input2, label2 = tdata
