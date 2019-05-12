@@ -122,8 +122,8 @@ class SVHN_Extractor(nn.Module):
         x = F.max_pool2d(x, 3, 2)
         x = F.relu(self.bn2(self.conv2(x)))
         x = F.max_pool2d(x, 3, 2)
-        x = F.relu(self.bn2_2(self.conv2_2(x)))
-        x = F.max_pool2d(x, 3, 2)
+        #x = F.relu(self.bn2_2(self.conv2_2(x)))
+        #x = F.max_pool2d(x, 3, 2)
         x = F.relu(self.bn3(self.conv3(x)))
         x = self.conv3_drop(x)
 
