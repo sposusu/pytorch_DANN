@@ -66,7 +66,7 @@ def test(feature_extractor, class_classifier, domain_classifier, source_dataload
         pred2 = output2.data.max(1, keepdim=True)[1]
         ans.extend(pred2.cpu())
         file_fn.extend(label2)
-    return ans,, file_fn
+    return ans, file_fn
 
 
 
