@@ -105,7 +105,10 @@ def visualizePerformance(feature_extractor, class_classifier, domain_classifier,
     utils.plot_embedding(dann_tsne, np.concatenate((s_labels, t_labels)),
                          np.concatenate((s_tags, t_tags)), 'Domain Adaptation', imgName)
 
-
+def save_checkpoint(checkpoint_path, model):
+        state = {'state_dict': model.state_dict()}
+        torch.save(state, checkpoint_path)
+        print('model saved to %s' % checkpoint_path)
 
 
 def main(args):
@@ -169,9 +172,12 @@ def main(args):
 
 
         # Plot embeddings periodically.
-        if (epoch % 1) == 0 and params.fig_mode is not None:
+        if (epoch % 5) == 0 and params.fig_mode is not None:
             visualizePerformance(feature_extractor, class_classifier, domain_classifier, src_test_dataloader,
                                  tgt_test_dataloader, imgName='embedding_' + str(epoch))
+    
+    save_checkpoint("model_test",class_classifier)
+
     feature_extractor
     class_classifier
     domain_classifier
