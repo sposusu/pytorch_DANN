@@ -217,7 +217,7 @@ def plot_embedding(X, y, d, title=None, imgName=None):
 
     for i in range(X.shape[0]):
         # plot colored number
-        plt.plot(X[i, 0], X[i, 1], str(y[i]),
+        plt.text(X[i, 0], X[i, 1], str(y[i]),
                  color=plt.cm.bwr(d[i]/1.),
                  fontdict={'weight': 'bold', 'size': 9})
 
