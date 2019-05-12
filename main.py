@@ -66,11 +66,11 @@ def visualizePerformance(feature_extractor, class_classifier, domain_classifier,
 
         if len(s_images * params.batch_size) > num_of_samples:
             break
-
+    print(num_of_samples)
     s_images, s_labels, s_tags = torch.cat(s_images)[:num_of_samples], \
                                  torch.cat(s_labels)[:num_of_samples], torch.cat(s_tags)[:num_of_samples]
 
-
+    print(s_images.shape)
     # Collect test data.
     t_images, t_labels, t_tags = [], [], []
     for batch in tgt_test_dataloader:
