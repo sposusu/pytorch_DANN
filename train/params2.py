@@ -32,9 +32,9 @@ extractor_dict = {
                     'usps_mnistm': models.SVHN_Extractor(),
                   'mnistm_svhn': models.SVHN_Extractor(),
                   'svhn_usps': models.SVHN_Extractor(),
-                  'mnistm':'feature_mnistm_10',
-                  'svhn':"feature_svhn_5",
-                  'usps':"feature_usps_10"
+                  'mnistm':'feature_mnistm_15',
+                  'svhn':"feature_svhn_10",
+                  'usps':"feature_usps_15"
                   
                   }
 
@@ -42,14 +42,14 @@ class_dict = {
                 'usps_mnistm': models.SVHN_Class_classifier(),
               'mnistm_svhn': models.SVHN_Class_classifier(),
               'svhn_usps': models.SVHN_Class_classifier(),
-              'mnistm':'class_mnistm_10',
-                  'svhn':"class_svhn_5",
-                  'usps':"class_usps_10"}
+              'mnistm':'class_mnistm_15',
+                  'svhn':"class_svhn_10",
+                  'usps':"class_usps_15"}
 
 domain_dict = {
                 'usps_mnistm': models.SVHN_Domain_classifier(),
                'mnistm_svhn': models.SVHN_Domain_classifier(),
                'svhn_usps': models.SVHN_Domain_classifier(),
-              'mnistm':'domainmnistm_10',
-                  'svhn':"domainsvhn_5",
-                  'usps':"domainusps_10"}
+              'mnistm':'domainmnistm_15',
+                  'svhn':"domainsvhn_10",
+                  'usps':"domainusps_15"}
