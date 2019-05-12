@@ -9,7 +9,7 @@ import torch.optim as optim
 
 import numpy as np
 
-from models_2 import models
+# from models_2 import models
 from train import test, train, params
 from util import utils
 from sklearn.manifold import TSNE

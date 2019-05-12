@@ -1,4 +1,4 @@
-from models_2 import models
+from models_2 import models_2 as models
 
 # utility params
 fig_mode = None
