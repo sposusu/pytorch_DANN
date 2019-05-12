@@ -131,6 +131,7 @@ def main(args):
         print('Epoch: {}'.format(epoch))
 
         ans, name = test(feature_extractor, class_classifier, domain_classifier, tgt_test_dataloader)
+        
     with open(params.save_dir, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(['image_name','label'])
