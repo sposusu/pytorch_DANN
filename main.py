@@ -173,8 +173,10 @@ def main(args):
 
         # Plot embeddings periodically.
         if (epoch % 5) == 0 and params.fig_mode is not None:
+            save_checkpoint("model_"+ params.target_domain +"_" + epoch ,class_classifier)
+
             visualizePerformance(feature_extractor, class_classifier, domain_classifier, src_test_dataloader,
-                                 tgt_test_dataloader, imgName='embedding_' + str(epoch))
+                                 tgt_test_dataloader, imgName='embedding_' + params.target_domain + str(epoch))
     
     save_checkpoint("model_test",class_classifier)
 

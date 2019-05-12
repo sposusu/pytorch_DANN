@@ -122,7 +122,7 @@ class SVHN_Extractor(nn.Module):
         x = F.max_pool2d(x, 3, 2)
         x = F.relu(self.bn2(self.conv2(x)))
         x = F.max_pool2d(x, 3, 2)
-        #x = F.relu(self.bn2_2(self.conv2_2(x)))
+        x = F.relu(self.bn2_2(self.conv2_2(x)))
         #x = F.max_pool2d(x, 3, 2)
         x = F.relu(self.bn3(self.conv3(x)))
         x = self.conv3_drop(x)
@@ -137,15 +137,12 @@ class SVHN_Class_classifier(nn.Module):
         self.bn1 = nn.BatchNorm1d(3072)
         self.fc2 = nn.Linear(3072, 2048)
         self.bn2 = nn.BatchNorm1d(2048)
-        self.fc2_2 = nn.Linear(2048, 512)
-        self.bn2_2 = nn.BatchNorm1d(512)
         self.fc3 = nn.Linear(512, 10)
 
     def forward(self, input):
         logits = F.relu(self.bn1(self.fc1(input)))
         logits = F.dropout(logits)
         logits = F.relu(self.bn2(self.fc2(logits)))
-        logits = F.relu(self.bn2_2(self.fc2_2(logits)))
         logits = self.fc3(logits)
 
         return F.log_softmax(logits, 1)
