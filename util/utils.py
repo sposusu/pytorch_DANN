@@ -87,7 +87,7 @@ def get_test_loader(dataset):
         data = datasets.ImageFolder(root=params.usps_path + '/test', transform= transform)
 
 
-        dataloader = DataLoader(dataset= data, batch_size= params.batch_size, shuffle= False)
+        dataloader = DataLoader(dataset= data, batch_size= params.batch_size, shuffle= True)
     elif dataset == 'mnistm':
         transform = transforms.Compose([
             # transforms.RandomCrop((28)),
@@ -98,7 +98,7 @@ def get_test_loader(dataset):
 
         data = datasets.ImageFolder(root=params.mnistm_path + '/test', transform= transform)
 
-        dataloader = DataLoader(dataset = data, batch_size= params.batch_size, shuffle= False)
+        dataloader = DataLoader(dataset = data, batch_size= params.batch_size, shuffle= True)
     elif dataset == 'svhn':
         transform = transforms.Compose([
             transforms.CenterCrop((28)),
@@ -108,7 +108,7 @@ def get_test_loader(dataset):
 
         data = datasets.ImageFolder(root=params.svhn_path + '/test', transform= transform)
 
-        dataloader = DataLoader(dataset = data, batch_size= params.batch_size, shuffle= False)
+        dataloader = DataLoader(dataset = data, batch_size= params.batch_size, shuffle= True)
     elif dataset == 'SynDig':
         transform = transforms.Compose([
             transforms.CenterCrop((28)),
