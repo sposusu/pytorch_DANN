@@ -41,7 +41,7 @@ extractor_dict = {
 class_dict = {
                 'usps_mnistm': models.SVHN_Class_classifier(),
               'mnistm_svhn': models.SVHN_Class_classifier(),
-              'svhn_usps': models.SVHN_Class_classifier()
+              'svhn_usps': models.SVHN_Class_classifier(),
               'mnistm':'class_mnistm_10',
                   'svhn':"class_svhn_5",
                   'usps':"class_usps_10"}
