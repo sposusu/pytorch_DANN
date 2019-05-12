@@ -180,8 +180,6 @@ def main(args):
             visualizePerformance(feature_extractor, class_classifier, domain_classifier, src_test_dataloader,
                                  tgt_test_dataloader, imgName='embedding_' + params.target_domain + str(epoch))
     
-    save_checkpoint("model_test",class_classifier)
-
     feature_extractor
     class_classifier
     domain_classifier

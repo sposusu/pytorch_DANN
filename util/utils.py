@@ -5,7 +5,9 @@ from torchvision import datasets, transforms
 
 from train import params
 from sklearn.manifold import TSNE
-
+from torch.utils.data import Dataset, DataLoader
+import glob
+from PIL import Image
 
 import matplotlib.pyplot as plt
 plt.switch_backend('agg')
@@ -14,6 +16,39 @@ import numpy as np
 import os, time
 from data import SynDig
 
+class PredictData(Dataset):
+    def __init__(self, root, transform=None):
+        """ Intialize the MNIST dataset """
+        self.images = None
+        self.labels = None
+        self.filenames = []
+        self.label_filenames = []     
+        self.transform = transform
+
+        # read filenames
+        filenames = glob.glob(os.path.join(img_root,"*.jpg")) 
+        
+        for fn in filenames:
+            self.filenames.append(fn) 
+            id = fn.split('/')[-1]
+            self.label_filenames.append(id)
+
+        self.len = len(self.label_filenames)
+    
+    def __getitem__(self, index):
+        """ Get a sample from the dataset """
+        image_fn = self.filenames[index]
+        label_fn = self.label_filenames[index]
+        image = Image.open(image_fn)
+
+        if self.transform is not None:
+            image = self.transform(image)
+
+        return image, label_fn
+
+    def __len__(self):
+        """ Total number of samples in the dataset """
+        return self.len
 
 def get_train_loader(dataset):
     """
@@ -124,6 +159,43 @@ def get_test_loader(dataset):
 
     return dataloader
 
+def get_pred_loader(dataset,path):
+    """
+    Get test dataloader of source domain or target domain
+    :return: dataloader
+    """
+    if dataset == 'usps':
+        transform = transforms.Compose([
+            transforms.Grayscale(3),
+            transforms.ToTensor(),
+            transforms.Normalize(mean= params.dataset_mean, std= params.dataset_std)
+        ])
+
+        data = PredictData(root=path, transform= transform)
+
+
+        dataloader = DataLoader(dataset= data, batch_size= params.batch_size, shuffle= False)
+    elif dataset == 'mnistm':
+        transform = transforms.Compose([
+            transforms.CenterCrop((28)),
+            transforms.ToTensor(),
+            transforms.Normalize(mean= params.dataset_mean, std= params.dataset_std)
+        ])
+
+        data = PredictData(root=path, transform= transform)
+
+        dataloader = DataLoader(dataset = data, batch_size= params.batch_size, shuffle= False)
+    elif dataset == 'svhn':
+        transform = transforms.Compose([
+            transforms.CenterCrop((28)),
+            transforms.ToTensor(),
+            transforms.Normalize(mean= params.dataset_mean, std = params.dataset_std)
+        ])
+
+        data = PredictData(root=path, transform= transform)
+
+        dataloader = DataLoader(dataset = data, batch_size= params.batch_size, shuffle= False)
+    return dataloader
 
 
 def optimizer_scheduler(optimizer, p):
