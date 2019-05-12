@@ -67,7 +67,7 @@ def test(feature_extractor, class_classifier, domain_classifier, target_dataload
         output2 = class_classifier(feature_extractor(input2))
         pred2 = output2.data.max(1, keepdim=True)[1]
         ans.extend(pred2.data[0])
-        print(pred2.data.value)
+        print(pred2.data[0].value)
         file_fn.extend(label2)
     return ans, file_fn
 
